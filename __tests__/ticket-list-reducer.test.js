@@ -1,37 +1,37 @@
-import ticketListReducer from './../src/reducers/ticket-list-reducer';
+import reducer from './../src/reducers/reducer';
 
-describe('ticketListReducer', () => {
+describe('reducer', () => {
 
   let action;
-  const sampleTicketData = {
-    names: 'Ryan & Aimen',
-    location: '4b',
-    issue: 'Jest is being a diva and won\'t work with Webpack!',
-    timeOpen: 1500000000000,
-    id: 0
+  const samplePostData = {
+    user: 'boogerboy',
+    title: 'who is that',
+    comment: 'what is up with those guys?',
+    id: 10,
+    voteCount: 2
   };
 
   test('Should return default state if no action type is recognized', () => {
-    expect(ticketListReducer({}, { type: null })).toEqual({});
+    expect(reducer({}, { type: null })).toEqual({});
   });
 
-  test('Should successfully add new ticket data to masterTicketList', () => {
-    const { names, location, issue, timeOpen, id} = sampleTicketData;
+  test('Should successfully add new post data to masterTicketList', () => {
+    const { user, title, comment, id, voteCount} = samplePostData;
     action = {
-      type: 'ADD_TICKET',
-      names: names,
-      location: location,
-      issue: issue,
-      timeOpen: timeOpen,
-      id: id
+      type: 'ADD_POST',
+      user: user,
+      title: title,
+      comment: comment,
+      id: id,
+      voteCount: voteCount
     };
-    expect(ticketListReducer({}, action)).toEqual({
+    expect(reducer({}, action)).toEqual({
       [id] : {
-        names: names,
-        location: location,
-        issue: issue,
-        timeOpen: timeOpen,
-        id: id
+        user: user,
+        title: title,
+        comment: comment,
+        id: id,
+        voteCount: voteCount
       }
     });
   });

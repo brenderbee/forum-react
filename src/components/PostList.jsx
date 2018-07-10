@@ -12,8 +12,9 @@ function PostList(props) {
           title={post.title}
           comment={post.comment}
           timeStamp={post.timeStamp}
+          voteCount={post.voteCount}
           id={postId}
-          key={postId}/>;   
+          key={postId}/>;
       })}
     </div>
   );

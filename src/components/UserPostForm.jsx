@@ -18,7 +18,8 @@ function UserPostForm(props) {
       user: _user.value,
       title: _title.value,
       comment: _comment.value,
-      timeStamp: new Moment()
+      timeStamp: new Moment(),
+      voteCount: 0
     };
     dispatch(action);
     _user.value = '';
