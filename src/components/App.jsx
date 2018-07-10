@@ -1,7 +1,10 @@
 import React from 'react';
 import Header from './Header';
 import Home from './Home';
-import { Route, Switch, fromRouter} from 'react-router-dom';
+import UserPage from './UserPage';
+import { Route, Switch, withRouter} from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 class App extends React.Component {
   constructor(props) {
@@ -15,10 +18,23 @@ class App extends React.Component {
     return(
       <div>
         <Header/>
-        <Route exact path='/' component={Home}/>
+        <Switch>
+          <Route exact path='/' component={Home}/>
+          <Route exact path='/user' component={UserPage}/>
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+App.propTypes = {
+  masterPostList: PropTypes.object
+};
+
+const mapStateToProps = state => {
+  return {
+    masterPostList: state
+  };
+};
+
+export default withRouter(connect(mapStateToProps)(App));

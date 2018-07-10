@@ -9,9 +9,9 @@ import { Provider } from 'react-redux';
 
 const store = createStore(reducer);
 
-let unsubscribe = store.subscribe(() =>
-  console.log(store.getState())
-);
+// let unsubscribe = store.subscribe(() =>
+//   console.log(store.getState())
+// );
 
 const render = (Component) => {
   ReactDOM.render(
@@ -28,7 +28,7 @@ render(App);
 
 /*eslint-disable */
 if (module.hot) {
-  module.hot.accept('./components/App', () => {
+  module.hot.accept(require('./components/App'), () => {
     render(App);
   });
 }
