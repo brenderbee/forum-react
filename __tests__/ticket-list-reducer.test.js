@@ -15,7 +15,7 @@ describe('reducer', () => {
     expect(reducer({}, { type: null })).toEqual({});
   });
 
-  test('Should successfully add new post data to masterTicketList', () => {
+  test('Should successfully add new post data to masterPostList', () => {
     const { user, title, comment, id, voteCount} = samplePostData;
     action = {
       type: 'ADD_POST',
@@ -32,6 +32,27 @@ describe('reducer', () => {
         comment: comment,
         id: id,
         voteCount: voteCount
+      }
+    });
+  });
+
+  test('Should successfully increment the vote count of a given post', () => {
+    const { user, title, comment, id, voteCount} = samplePostData;
+    action = {
+      type: 'UPVOTE',
+      user: user,
+      title: title,
+      comment: comment,
+      id: id,
+      voteCount: voteCount
+    };
+    expect(reducer({}, action)).toEqual({
+      [id] : {
+        user: user,
+        title: title,
+        comment: comment,
+        id: id,
+        voteCount: 3
       }
     });
   });
