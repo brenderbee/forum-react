@@ -44,6 +44,7 @@ function UserPostForm(props) {
           id='comment'
           placeholder='Write your Post'
           ref={(input) => {_comment = input;}}/>
+        <button type='submit'>Post</button>
       </form>
     </div>
   );
